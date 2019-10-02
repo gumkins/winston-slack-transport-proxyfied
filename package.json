@@ -1,7 +1,7 @@
 {
-  "name": "winston-slack-webhook-transport",
-  "version": "1.1.0",
-  "description": "A Slack transport for Winston 3 that logs to a channel via webhooks.",
+  "name": "winston-slack-transport-proxyfied",
+  "version": "1.1.2",
+  "description": "A Slack transport for Winston 3 that logs to a channel via webhooks with a posiblity to specify a proxy server.",
   "main": "slackHook.js",
   "scripts": {
     "test": "npm run mocha",
@@ -9,14 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheAppleFreak/winston-slack-webhook-transport.git"
+    "url": "git+https://github.com/gumkins/winston-slack-webhook-transport.git"
   },
-  "author": "TheAppleFreak",
+  "author": "gumkins",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/TheAppleFreak/winston-slack-webhook-transport/issues"
-  },
-  "homepage": "https://github.com/TheAppleFreak/winston-slack-webhook-transport#readme",
   "dependencies": {
     "request": "^2.88.0",
     "winston-transport": "^4.3.0"

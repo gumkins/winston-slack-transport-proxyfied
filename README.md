@@ -1,13 +1,13 @@
-# winston-slack-webhook-transport
+# winston-slack-transport-proxyfied
 
 A Slack transport for Winston 3+ that logs to a channel via webhooks.
 
-[![NPM](https://nodei.co/npm/winston-slack-webhook-transport.png?downloads=true)](https://nodei.co/npm/winston-slack-webhook-transport/)
+[![NPM](https://nodei.co/npm/winston-slack-transport-proxyfied.png?downloads=true)](https://nodei.co/npm/winston-slack-transport-proxyfied/)
 
 ## Installation
 
 ```
-npm install winston winston-slack-webhook-transport
+npm install winston winston-slack-transport-proxyfied
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ npm install winston winston-slack-webhook-transport
 
 ```javascript
 const winston = require("winston");
-const SlackHook = require("winston-slack-webhook-transport");
+const SlackHook = require("winston-slack-transport-proxyfied");
 
 const logger = winston.createLogger({
 	level: "info",
@@ -34,7 +34,7 @@ logger.info("This should now appear on Slack");
 
 ```javascript
 const winston = require("winston");
-const SlackHook = require("winston-slack-webhook-transport");
+const SlackHook = require("winston-slack-transport-proxyfied");
 
 const logger = winston.createLogger({});
 
@@ -53,6 +53,7 @@ logger.add(SlackHook, {webhookUrl: "https://hooks.slack.com/services/xxx/xxx/xxx
 * `unfurlLinks` - Enables or disables [link unfurling.](https://api.slack.com/docs/message-attachments#unfurling) (Default: false)
 * `unfurlMedia` - Enables or disables [media unfurling.](https://api.slack.com/docs/message-link-unfurling) (Default: false)
 * `mrkdwn` - Enables or disables [`mrkdwn` formatting](https://api.slack.com/messaging/composing/formatting#basics) within attachments or layout blocks (Default: false)
+* `proxy` - proxy server URL
 
 ### Message formatting
 
@@ -60,7 +61,7 @@ logger.add(SlackHook, {webhookUrl: "https://hooks.slack.com/services/xxx/xxx/xxx
 
 ```javascript
 const winston = require("winston");
-const SlackHook = require("winston-slack-webhook-transport");
+const SlackHook = require("winston-slack-transport-proxyfied");
  
 const logger = winston.createLogger({
     level: "info",
@@ -92,3 +93,21 @@ const logger = winston.createLogger({
 
 logger.info("Definitely try playing around with this.")
 ```
+
+### Setup proxy server
+
+```javascript
+const winston = require("winston");
+const SlackHook = require("winston-slack-transport-proxyfied");
+
+const logger = winston.createLogger({
+        level: "info",
+        transports: [
+                new SlackHook({
+                        webhookUrl: "https://hooks.slack.com/services/xxx/xxx/xxx",
+                        proxy: "http://192.168.1.5" // TODO: replace with your proxy server URL
+                })
+        ]
+});
+```
+
